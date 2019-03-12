@@ -8,13 +8,6 @@ app.use(express.static("public"));
 app.set("views", "views");
 app.set("view engine", "ejs");
 
-const PORT = process.env.PORT || 5000
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
-
 app.get("/rates", getRates);
   // console.log("Received request")
   // var emailAddress = "stanley@gmail.com";
@@ -59,7 +52,7 @@ app.get("/rates", getRates);
   console.log("I made it this far");
 }
 
-.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 
 // app.listen(3000, function() {
 //   console.log("Server started on 3000");
