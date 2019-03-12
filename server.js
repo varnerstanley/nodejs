@@ -14,9 +14,9 @@ app.get("/rates", getRates);
   // var name = "Stanley";
   // var param = {username: name, email: emailAddress};
 
-  app.listen(3000, function() {
-    console.log("Server started on 3000");
-  });
+  // app.listen(3000, function() {
+  //   console.log("Server started on 3000");
+  // });
 
   function getRates(req, res){
     const operation = req.query.operation;
