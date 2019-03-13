@@ -1,8 +1,6 @@
-//jshint esversion:6
-
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 5000;
+app.listen(process.env.PORT);
 
 app.use(express.static("public"));
 
@@ -10,15 +8,10 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 app.get("/rates", getRates);
-  // console.log("Received request")
-  // var emailAddress = "stanley@gmail.com";
-  // var name = "Stanley";
-  // var param = {username: name, email: emailAddress};
 
   // app.listen(3000, function() {
   //   console.log("Server started on 3000");
   // });
-
   function getRates(req, res){
     const operation = req.query.operation;
 
@@ -43,7 +36,6 @@ app.get("/rates", getRates);
 		// It would be best here to redirect to an "unknown operation"
 		// error page or something similar.
 	}
-
 	// Set up a JSON object of the values we want to pass along to the EJS result page
 	const params = {operation: op, result: result};
 
@@ -53,7 +45,12 @@ app.get("/rates", getRates);
   console.log("I made it this far");
 }
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
 
-// app.listen(3000, function() {
-//   console.log("Server started on 3000");
-// });
+app.listen(port, function() {
+  console.log("Server has started successfully");
+});
